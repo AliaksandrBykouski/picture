@@ -2,7 +2,9 @@ import modals from './modules/modals';
 import slider from './modules/slider';
 import forms from './modules/forms';
 import mask from './modules/mask';
+import emailMask  from "./modules/emailMask";
 import checkTextInputs from './modules/checkTextInputs';
+import showMoreStyles  from "./modules/showMoreStyles";
 
 window.addEventListener('DOMContentLoaded', () => {
     "use strict";
@@ -14,4 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
     mask('[name="phone"]');
     checkTextInputs('[name ="name"]');
     checkTextInputs('[name ="message"]');
+    emailMask('[name="email"]');
+    showMoreStyles('.button-styles', '.styles-2');
 });
