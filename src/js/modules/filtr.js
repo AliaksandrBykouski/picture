@@ -11,7 +11,7 @@ const filter = () => {
         wrapper = document.querySelector('.portfolio-wrapper'),
         markAll = wrapper.querySelectorAll('.all'),
         markGirl = wrapper.querySelectorAll('.girl'),
-        markLovers = wrapper.querySelectorAll('.lovees'),
+        markLovers = wrapper.querySelectorAll('.lovers'),
         markChef = wrapper.querySelectorAll('.chef'),
         markGuy = wrapper.querySelectorAll('.guy'),
         no = document.querySelector('.portfolio-no');
@@ -22,7 +22,7 @@ const filter = () => {
             mark.classList.remove('animted', 'fadeIn');
         });
 
-        no.style.displey = 'none';
+        no.style.display = 'none';
         no.classList.remove('animated', 'fadeIn');
 
         if (markType) {
@@ -36,45 +36,58 @@ const filter = () => {
         }
     };
 
-    btnAll.addEventListener('click', () => {
-        typeFilter(markAll);
-    });
-
-    btnLovers.addEventListener('click', () => {
-        typeFilter(markLovers)
-    });
-
-    btnChef.addEventListener('click', () => {
-        typeFilter(markChef)
-    });
-
-    btnLovers.addEventListener('click', () => {
-        typeFilter(markLovers)
-    });
-
-    btnGirl.addEventListener('click', () => {
-        typeFilter(markGirl)
-    });
-
-    btnGuy.addEventListener('click', () => {
-        typeFilter(markGuy)
-    });
-
-    btnGrandDad.addEventListener('click', () => {
-        typeFilter();
-    });
-
-    btnGrandmother.addEventListener('click', () => {
-        typeFilter();
-    });
-
     menu.addEventListener('click', (event) => {
         const target = event.target;
-        if (target && target.tagName === 'LI') {
-            items.forEach((item) => item.classList.remove('active'));
-            target.classList.add('active');
-        }
+        if (!target || target.tagName !== 'LI') return;
+
+        items.forEach((item) => item.classList.remove('active'));
+        target.classList.add('active');
+
+        const className = target.classList[0]; // Получаем класс нажатой кнопки
+        const markType = className === 'all' ? markAll : wrapper.querySelectorAll(`.${className}`);
+
+        typeFilter(markType.length ? markType : null);
     });
+
+    // btnAll.addEventListener('click', () => {
+    //     typeFilter(markAll);
+    // });
+    //
+    // btnLovers.addEventListener('click', () => {
+    //     typeFilter(markLovers)
+    // });
+    //
+    // btnChef.addEventListener('click', () => {
+    //     typeFilter(markChef)
+    // });
+    //
+    // btnLovers.addEventListener('click', () => {
+    //     typeFilter(markLovers)
+    // });
+    //
+    // btnGirl.addEventListener('click', () => {
+    //     typeFilter(markGirl)
+    // });
+    //
+    // btnGuy.addEventListener('click', () => {
+    //     typeFilter(markGuy)
+    // });
+    //
+    // btnGrandDad.addEventListener('click', () => {
+    //     typeFilter();
+    // });
+    //
+    // btnGrandmother.addEventListener('click', () => {
+    //     typeFilter();
+    // });
+    //
+    // menu.addEventListener('click', (event) => {
+    //     const target = event.target;
+    //     if (target && target.tagName === 'LI') {
+    //         items.forEach((item) => item.classList.remove('active'));
+    //         target.classList.add('active');
+    //     }
+    // });
 };
 
 export default filter;
